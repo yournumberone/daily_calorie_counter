@@ -1,0 +1,11 @@
+.mt-1
+  - unless current_user
+    = link_to t('sign_in'), new_user_session_path, class: 'btn btn-primary'
+
+    =< link_to t('sign_up'), new_user_registration_path, class: 'btn btn-primary'
+
+  =< link_to t('home'), root_path, class: 'btn btn-primary'
+  =< link_to t('products'), products_path, class: 'btn btn-primary'
+  =< link_to t('daily_diets'), daily_diets_path, class: 'btn btn-primary'
+
+  =< current_user&.email

@@ -31,3 +31,13 @@
 
 en:
   hello: "Hello world"
+  calories: 'Calories: '
+  total_calories: 'Total calories: '
+  planned_calories: 'Planned calories: '
+  daily_diet: Daily Diet
+  total_carbohydrates: 'Total Carbohydrates: '
+  total_proteins: 'Total Proteins: '
+  total_fats: 'Total Fats: '
+  add_product: 'Add product '
+  meal_example: '1 apple, 200g yogurt...'
+  information_or_recipe: 'Information about product or/and recipe...'

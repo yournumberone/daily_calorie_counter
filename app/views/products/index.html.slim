@@ -1,0 +1,26 @@
+.m-3
+  h1.my-3
+    = t('products')
+  .my-4
+    = link_to t('add_product'), new_product_path, class: 'btn btn-warning'
+
+  .my-3
+    = search_form_for @q do |f|
+      = f.search_field :name_cont, class: 'form-control'
+      = f.button :button, class: 'btn btn-success mt-1' do
+        = t('search')
+
+  table.table.table-dark.table-striped
+    tr
+      th = t('product')
+      th = t('proteins')
+      th = t('fats')
+      th = t('carbohydrates')
+      th = t('calories')
+    - @products.each do |product|
+      tr
+        td = link_to product.name, product_path(product)
+        td = link_to product.protein_g, product_path(product)
+        td = link_to product.fat_total_g, product_path(product)
+        td = link_to product.carbohydrates_total_g, product_path(product)
+        td = link_to product.calories, product_path(product)

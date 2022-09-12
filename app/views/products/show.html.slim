@@ -1,0 +1,13 @@
+h1
+  = @product.name.capitalize
+  table
+    tr
+      th = t('proteins')
+      th = t('fats')
+      th = t('carbohydrates')
+      th = t('calories')
+    tr
+      td = @product.protein_g
+      td = @product.fat_total_g
+      td = @product.carbohydrates_total_g
+      td = @product.calories

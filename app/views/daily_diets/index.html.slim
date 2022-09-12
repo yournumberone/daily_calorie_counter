@@ -1,0 +1,11 @@
+.my-4
+  = link_to t('new_daily_plan'), new_daily_diet_path, class: 'btn btn-dark'
+.mt-4
+  - @daily_diets.each do |diet|
+    = link_to daily_diet_path(diet) do
+      .row
+        .col-4
+          = diet.date
+        .col-4
+          = t('calories')
+          =< "#{ diet.total_calories.to_i }/#{diet.planned_calories.to_i}"

@@ -1,0 +1,9 @@
+.m-3
+  = simple_form_for product do |f|
+    = f.input :name
+    = f.input :protein_g, type: :decimal
+    = f.input :fat_total_g, type: :decimal
+    = f.input :carbohydrates_total_g, type: :decimal
+    = f.input :calories, type: :decimal
+    = f.input :description, as: :text, placeholder: t('information_or_recipe')
+    = f.button :submit, class: 'btn btn-success mt-1'
