@@ -9,11 +9,19 @@ class CalorieNinjasApi
       create_product(response) if response.code == 200
     end
 
+    def take_items(meal)
+      headers = { 'X-Api-Key': ENV.fetch('CALORIE_NINJAS_KEY') }
+      response = HTTParty.get(ENV.fetch('CALORIE_NINJAS_URL'), query: { query: meal }, headers:)
+      JSON.parse(response.body)['items']
+    end
+
     private
 
     def create_product(response)
-      attributes = JSON.parse(response.body)['items'][0]
-      Product.create(attributes.symbolize_keys.slice(:name, :calories, :protein_g, :fat_total_g, :carbohydrates_total_g))
+      items = JSON.parse(response.body)['items']
+      items.each do |item|
+        Product.create(item.symbolize_keys.slice(:name, :calories, :protein_g, :fat_total_g, :carbohydrates_total_g))
+      end
     end
   end
 end

@@ -82,4 +82,6 @@ gem 'pundit', '~> 2.2'
 
 gem 'ransack', '~> 3.2'
 
-gem "byebug", "~> 11.1"
+gem 'byebug', '~> 11.1'
+
+gem 'sidekiq', '~> 6.5'

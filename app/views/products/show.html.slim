@@ -1,7 +1,9 @@
-h1
-  = @product.name.capitalize
-  table
-    tr
+.m-5
+  h1
+    = @product.name.capitalize
+
+  table.text-primary.table.table-dark.table-striped
+    tr.m-3
       th = t('proteins')
       th = t('fats')
       th = t('carbohydrates')
@@ -11,3 +13,6 @@ h1
       td = @product.fat_total_g
       td = @product.carbohydrates_total_g
       td = @product.calories
+
+  h3.mt-4 = t('description')
+  = @product.description

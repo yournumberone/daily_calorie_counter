@@ -1,7 +1,7 @@
 # frozen_string_literal: true
-  module DailyDiets
-  class MealsController < ApplicationController
 
+module DailyDiets
+  class MealsController < ApplicationController
     def show
       @meal = find_meal
     end
@@ -11,6 +11,7 @@
       @meal = @diet.meals.new(meal_params)
       if @meal.save
         redirect_to root_path, notice: t('.success')
+        CalculateNutrientsJob.perform_async(@meal.id)
       else
         flash.now[:alert] = t('.fail')
         render :new
