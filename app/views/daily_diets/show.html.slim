@@ -24,7 +24,7 @@ h2.m-3
     = f.button :button, class: 'btn btn-warning mt-1' do
       = t('add_meal')
 
-  table.table.table-dark.table-striped
+  table.table.table-dark.table-striped.mt-3
     tr
       th = t('meal')
       th = t('proteins')
@@ -33,12 +33,12 @@ h2.m-3
       th = t('calories')
       th = t('actions')
     - @meals.each do |meal|
-      tr
-        td = meal.meal
-        td = meal.protein_g
-        td = meal.fat_total_g
-        td = meal.carbohydrates_total_g
-        td = meal.calories
-        td
-          = link_to t('delete'), daily_diet_meal_path(@daily_diet, meal), data: { confirm: t('are_you_sure'), 'turbo-method': :delete },
-          class: 'btn btn-sm btn-danger' if meal.id
+      - if meal.id
+        tr
+          td = meal.meal
+          td = meal.protein_g
+          td = meal.fat_total_g
+          td = meal.carbohydrates_total_g
+          td = meal.calories
+          td
+            = link_to t('delete'), daily_diet_meal_path(@daily_diet, meal), data: { confirm: t('are_you_sure'), 'turbo-method': :delete }, class: 'btn btn-sm btn-danger'

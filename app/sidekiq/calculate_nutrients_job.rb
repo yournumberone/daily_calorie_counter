@@ -12,8 +12,6 @@ class CalculateNutrientsJob
 
   private
 
-  # TODO: calculate after destroy meal
-
   def meal_attributes(items)
     { protein_g: items.pluck('protein_g').map(&:to_f).reduce(:+),
       fat_total_g: items.pluck('fat_total_g').map(&:to_f).reduce(:+),

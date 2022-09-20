@@ -34,9 +34,10 @@ module DailyDiets
 
     def destroy
       @meal = find_meal
-      diet = find_diet
+      diet = @meal.daily_diet
       if @meal.destroy
         redirect_to daily_diet_path(diet), notice: t('.success')
+        ReduceNutrientsJob.perform_async(@meal.attributes)
       else
         redirect_to daily_diet_path(diet), alert: t('.fail')
       end
