@@ -10,7 +10,7 @@ module DailyDiets
       @diet = find_diet
       @meal = @diet.meals.new(meal_params)
       if @meal.save
-        redirect_to root_path, notice: t('.success')
+        redirect_to daily_diet_path(@diet), notice: t('.success')
         CalculateNutrientsJob.perform_async(@meal.id)
       else
         flash.now[:alert] = t('.fail')
@@ -32,12 +32,13 @@ module DailyDiets
       end
     end
 
-    def delete
+    def destroy
       @meal = find_meal
+      diet = find_diet
       if @meal.destroy
-        redirect_to meals_path, notice: t('.success')
+        redirect_to daily_diet_path(diet), notice: t('.success')
       else
-        redirect_to meal_path(@meal), alert: t('.fail')
+        redirect_to daily_diet_path(diet), alert: t('.fail')
       end
     end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CalculateNutrientsJob
   include Sidekiq::Job
 
@@ -9,6 +11,8 @@ class CalculateNutrientsJob
   end
 
   private
+
+  # TODO: calculate after destroy meal
 
   def meal_attributes(items)
     { protein_g: items.pluck('protein_g').map(&:to_f).reduce(:+),

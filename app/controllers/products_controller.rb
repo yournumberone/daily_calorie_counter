@@ -4,9 +4,9 @@ class ProductsController < ApplicationController
   def index
     @q = Product.ransack(params[:q])
     @products = @q.result(distinct: true)
-    if @products.size.zero? && params[:q].present?
-      CalorieNinjasApi.call(params[:q][:name_cont])
-    end
+    return unless @products.size.zero? && params[:q].present?
+
+    CalorieNinjasApi.create_product(params[:q][:name_cont])
   end
 
   def show
@@ -57,6 +57,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(%i[q name calories protein_g fat_total_g carbohydrates_total_g description])
+    params.require(:product).permit(%i[name calories protein_g fat_total_g carbohydrates_total_g description])
   end
 end

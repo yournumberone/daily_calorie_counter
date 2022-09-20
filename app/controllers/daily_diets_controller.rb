@@ -7,8 +7,8 @@ class DailyDietsController < ApplicationController
 
   def show
     @daily_diet = find_daily_diet
-    @meal = @daily_diet.meals.build
     @meals = @daily_diet.meals
+    @meal = @daily_diet.meals.build
   end
 
   def new
