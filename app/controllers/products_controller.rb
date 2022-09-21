@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   def index
     @q = Product.ransack(params[:q])
     @products = @q.result(distinct: true)
+    @pagy, @products = pagy(@products)
     return unless @products.size.zero? && params[:q].present?
 
     CalorieNinjasApi.create_product(params[:q][:name_cont])
