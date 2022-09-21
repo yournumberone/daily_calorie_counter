@@ -1,11 +1,11 @@
-.my-4
+.m-4
   = link_to t('new_daily_plan'), new_daily_diet_path, class: 'btn btn-dark'
-.mt-4
+.m-4.list-group.list-group-flush
   - @daily_diets.each do |diet|
-    = link_to daily_diet_path(diet) do
-      .row
+    = link_to daily_diet_path(diet), class: 'text-reset text-decoration-none' do
+      .list-group-item.list-group-item-action.list-group-item-warning
         .col-4
-          = diet.date
+          = diet.date == Date.today ? t('today') : diet.date
         .col-4
           = t('calories')
           =< "#{ diet.total_calories.to_i }/#{diet.planned_calories.to_i}"

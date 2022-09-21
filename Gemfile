@@ -85,3 +85,5 @@ gem 'ransack', '~> 3.2'
 gem 'byebug', '~> 11.1'
 
 gem 'sidekiq', '~> 6.5'
+
+gem "pagy", "~> 5.10"

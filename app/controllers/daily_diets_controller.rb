@@ -2,7 +2,7 @@
 
 class DailyDietsController < ApplicationController
   def index
-    @daily_diets = current_user.daily_diets.all
+    @daily_diets = current_user.daily_diets.order('date desc')
   end
 
   def show
@@ -18,7 +18,7 @@ class DailyDietsController < ApplicationController
   def create
     @daily_diet = current_user.daily_diets.new(daily_diet_params)
     if @daily_diet.save
-      redirect_to root_path, notice: t('.success')
+      redirect_to daily_diets_path, notice: t('.success')
     else
       flash.now[:alert] = @daily_diet.errors.full_messages
       render :new

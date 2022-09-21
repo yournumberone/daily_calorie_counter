@@ -1,11 +1,16 @@
-.mt-1
-  - unless current_user
-    = link_to t('sign_in'), new_user_session_path, class: 'btn btn-primary'
-
-    =< link_to t('sign_up'), new_user_registration_path, class: 'btn btn-primary'
-
-  =< link_to t('home'), root_path, class: 'btn btn-primary'
-  =< link_to t('products'), products_path, class: 'btn btn-primary'
-  =< link_to t('daily_diets'), daily_diets_path, class: 'btn btn-primary'
-
-  =< current_user&.email
+nav.navbar.navbar-expand-lg.navbar-primary
+  .container-fluid
+    .nav-item
+      =< link_to t('home'), root_path, class: 'nav-link'
+    .nav-item
+      =< link_to t('products'), products_path, class: 'nav-link'
+    .nav-item
+      =< link_to t('daily_diets'), daily_diets_path, class: 'nav-link'
+    - unless current_user
+      .nav-item
+        = link_to t('sign_in'), new_user_session_path, class: 'btn btn-dark'
+        =< link_to t('sign_up'), new_user_registration_path, class: 'btn btn-dark'
+    - else
+      .nav-item
+        =< current_user&.email
+        =< link_to t('sign_out'), destroy_user_session_path, data: { confirm: t('are_you_sure'), 'turbo-method': :delete }, class: 'btn btn-dark'
