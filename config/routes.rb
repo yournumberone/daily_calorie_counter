@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :products
   resources :daily_diets do
     scope module: 'daily_diets' do
-      resources :meals
+      resources :meals, only: %i[create destroy]
     end
   end
 

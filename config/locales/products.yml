@@ -1,0 +1,11 @@
+en:
+  products:
+    destroy:
+      success: 'Product was successfully destroyed.'
+      fail: 'Something wrong.'
+    index:
+      products: 'Products'
+      search: 'Search '
+    create:
+      success: 'Product was successfully created.'
+      fail: 'Something wrong.'

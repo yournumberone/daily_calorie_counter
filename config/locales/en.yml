@@ -30,6 +30,14 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  product: 'Product'
+  proteins: 'Proteins'
+  fats: 'Fats'
+  carbohydrates: 'Carbohydrates'
+  actions: 'Actions'
+  back: 'Back'
+  delete: 'Delete'
+  update: 'Update'
   hello: "Hello world"
   calories: 'Calories: '
   total_calories: 'Total calories: '
@@ -43,3 +51,12 @@ en:
   information_or_recipe: 'Information about product or/and recipe...'
   description: 'Description: '
   are_you_sure: 'Are you sure?'
+  permission_denied: 'Permission denied.'
+  layouts:
+    shared:
+      navbar:
+        products: 'Products'
+        daily_diets: 'Daily Diets'
+        home: 'Home'
+        sign_in: 'Sign in'
+        sign_out: 'Sign Out'

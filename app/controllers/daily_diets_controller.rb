@@ -7,6 +7,7 @@ class DailyDietsController < ApplicationController
 
   def show
     @daily_diet = find_daily_diet
+    authorize @daily_diet
     @meals = @daily_diet.meals
     @meal = @daily_diet.meals.build
   end
@@ -27,10 +28,12 @@ class DailyDietsController < ApplicationController
 
   def edit
     @daily_diet = DailyDiet.find(params[:id])
+    authorize @daily_diet
   end
 
   def update
     @daily_diet = find_daily_diet
+    authorize @daily_diet
     if @daily_diet.update(daily_diet_params)
       redirect_to daily_diets_path, notice: t('.success')
     else
@@ -39,8 +42,9 @@ class DailyDietsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @daily_diet = find_daily_diet
+    authorize @daily_diet
     if @daily_diet.destroy
       redirect_to daily_diets_path, notice: t('.success')
     else

@@ -2,9 +2,6 @@
 
 module DailyDiets
   class MealsController < ApplicationController
-    def show
-      @meal = find_meal
-    end
 
     def create
       @diet = find_diet
@@ -18,22 +15,9 @@ module DailyDiets
       end
     end
 
-    def edit
-      @meal = Meal.find(params[:id])
-    end
-
-    def update
-      @meal = find_meal
-      if @meal.update(meal_params)
-        redirect_to meals_path, notice: t('.success')
-      else
-        flash.now[:alert] = t('.fail')
-        render :edit
-      end
-    end
-
     def destroy
       @meal = find_meal
+      authorize @meal
       diet = @meal.daily_diet
       if @meal.destroy
         redirect_to daily_diet_path(diet), notice: t('.success')

@@ -1,3 +1,6 @@
-h1.my-3
-  = t('edit_plan')
-= render partial: 'form', locals: { daily_diet: @daily_diet }
+.m-3
+  h1
+    = t('edit_plan')
+  = render partial: 'form', locals: { daily_diet: @daily_diet }
+
+  = link_to t('back'), daily_diet_path(@daily_diet)

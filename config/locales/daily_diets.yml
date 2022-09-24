@@ -1,0 +1,12 @@
+en:
+  daily_diets:
+    create:
+      success: 'Diet was successfully created'
+      fail: 'Something wrong'
+    meals:
+      destroy:
+        success: 'Meal was successfully removed'
+        fail: 'Something wrong'
+      create:
+        success: 'Meal was successfully added.'
+        fail: 'Something wrong'

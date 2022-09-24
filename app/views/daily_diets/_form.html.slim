@@ -1,4 +1,4 @@
 = simple_form_for daily_diet do |f|
   = f.input :planned_calories, type: :integer
   = f.input :date, as: :date, html5: true
-  = f.submit
+  = f.submit t('update'), class: 'btn btn-success my-3'

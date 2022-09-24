@@ -2,26 +2,30 @@ h1.m-3
   = t('daily_diet')
 h2.m-3
   = @daily_diet.date
-.mx-3
-  = t('planned_calories')
-  = @daily_diet.planned_calories
-.mx-3
+strong.mx-3
   = t('total_calories')
   = @daily_diet.total_calories
-.mx-3
+strong.mx-3
   = t('total_proteins')
   = @daily_diet.total_proteins
-.mx-3
+strong.mx-3
   = t('total_fats')
   = @daily_diet.total_fats
-.mx-3
+strong.mx-3
   = t('total_carbohydrates')
   = @daily_diet.total_carbohydrates
+br
+strong.mx-3
+  = t('planned_calories')
+  = @daily_diet.planned_calories
+br
+  .m-3
+    = link_to t('edit'), edit_daily_diet_path(@daily_diet), class: 'btn btn-warning'
 
 .m-3
   = simple_form_for [@daily_diet, @meal] do |f|
     = f.input :meal, placeholder: t('meal_example')
-    = f.button :button, class: 'btn btn-warning mt-1' do
+    = f.button :button, class: 'btn btn-success mt-1' do
       = t('add_meal')
 
   table.table.table-dark.table-striped.mt-3

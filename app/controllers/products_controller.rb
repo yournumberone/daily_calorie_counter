@@ -30,10 +30,12 @@ class ProductsController < ApplicationController
 
   def edit
     @product = find_product
+    authorize @product
   end
 
   def update
     @product = find_product
+    authorize @product
     if @product.update(product_params)
       redirect_to products_path, notice: t('.success')
     else
@@ -42,8 +44,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @product = find_product
+    authorize @product
     if @product.destroy
       redirect_to products_path, notice: t('.success')
     else
