@@ -2,7 +2,6 @@
 
 module DailyDiets
   class MealsController < ApplicationController
-
     def create
       @diet = find_diet
       @meal = @diet.meals.new(meal_params)
