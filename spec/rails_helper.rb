@@ -2,6 +2,7 @@
 
 require 'spec_helper'
 require 'support/factory_bot'
+require 'sidekiq/testing'
 
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'

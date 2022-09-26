@@ -4,8 +4,8 @@ require 'rails_helper'
 
 RSpec.describe DailyDietsController, type: :controller do
   let(:user) { FactoryBot.create(:user) }
-  let(:second_user) { FactoryBot.create(:user) }
-  let(:daily_diet) { FactoryBot.create(:daily_diet, user:) }
+  let(:another_user) { FactoryBot.create(:user) }
+  let!(:daily_diet) { FactoryBot.create(:daily_diet, user:) }
 
   describe 'GET daily_diets#index' do
     it 'returns 200' do
@@ -32,6 +32,29 @@ RSpec.describe DailyDietsController, type: :controller do
     it 'returns 200' do
       sign_in user
       get :edit, params: { id: daily_diet.id }
+      expect(response.status).to eq(200)
+    end
+  end
+
+  describe 'POST daily_diets#create' do
+    it 'creates diet' do
+      sign_in user
+      expect do
+        post :create, params: { daily_diet: { planned_calories: 1200, date: Time.zone.today } }
+      end.to change(DailyDiet, :count).by(1)
+    end
+
+    it 'redirects unauthenticated user to sign_in' do
+      expect do
+        post :create, params: { daily_diet: { planned_calories: 1200, date: Time.zone.today } }
+      end.not_to change(Meal, :count)
+    end
+  end
+
+  describe 'GET daily_diets#edit' do
+    it 'returns 200' do
+      sign_in user
+      get :edit, params: { id: daily_diet.id }
       expect(response).to be_successful
     end
   end
@@ -50,14 +73,14 @@ RSpec.describe DailyDietsController, type: :controller do
       sign_in user
       expect do
         delete :destroy, params: { id: daily_diet.id }
-      end.to change { DailyDietsController.count }.by(-1)
+      end.to change { DailyDiet.count }.by(-1)
     end
 
-    it 'should not destroy diet' do
-      sign_in second_user
+    it 'should not destroy diet if user is not authorized' do
+      sign_in another_user
       expect do
         delete :destroy, params: { id: daily_diet.id }
-      end.not_to change { daily_diet.class.count }
+      end.not_to change { DailyDiet.count }
     end
   end
 end
