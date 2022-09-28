@@ -89,4 +89,4 @@ gem 'sidekiq', '~> 6.5'
 
 gem 'pagy', '~> 5.10'
 
-gem "faker", "~> 2.23"
+gem 'faker', '~> 2.23'

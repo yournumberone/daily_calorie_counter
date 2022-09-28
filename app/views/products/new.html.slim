@@ -1,3 +1,6 @@
-h3.m-3
+h2.mx-3.my-5
   = t('add_product')
+h4.m-3
+  strong
+    = t('per_hundred')
 = render partial: 'form', locals: { product: @product }

@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :daily_diet do
-    date { Date.today }
+    date { Time.zone.today }
     planned_calories { Faker::Number.decimal(l_digits: 4, r_digits: 2) }
     user
   end

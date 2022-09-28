@@ -17,7 +17,6 @@
       th = t('fats')
       th = t('carbohydrates')
       th = t('calories')
-      th = t('actions')
     - @products.each do |product|
       tr
         td = link_to product.name, product_path(product)
@@ -25,7 +24,4 @@
         td = link_to product.fat_total_g, product_path(product)
         td = link_to product.carbohydrates_total_g, product_path(product)
         td = link_to product.calories, product_path(product)
-        td
-          - if policy(product).destroy?
-            = link_to t('delete'), product_path(product), data: { confirm: t('are_you_sure'), 'turbo-method': :delete }, class: 'btn btn-sm btn-danger'
 == pagy_bootstrap_nav(@pagy)

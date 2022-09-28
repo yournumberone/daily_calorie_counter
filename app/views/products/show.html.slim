@@ -8,11 +8,16 @@
       th = t('fats')
       th = t('carbohydrates')
       th = t('calories')
+      th
     tr
       td = @product.protein_g
       td = @product.fat_total_g
       td = @product.carbohydrates_total_g
       td = @product.calories
+      td
+        - if policy(@product).destroy?
+          = link_to t('edit'), edit_product_path(@product), class: 'btn btn-sm btn-warning mx-3'
+          = link_to t('delete'), product_path(@product), data: { confirm: t('are_you_sure'), 'turbo-method': :delete }, class: 'btn btn-sm btn-danger'
 
   h3.mt-4 = t('description')
   = @product.description

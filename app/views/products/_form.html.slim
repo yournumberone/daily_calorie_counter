@@ -1,9 +1,16 @@
-.m-3
+.m-3.col-8
   = simple_form_for product do |f|
-    = f.input :name
-    = f.input :protein_g, type: :decimal
-    = f.input :fat_total_g, type: :decimal
-    = f.input :carbohydrates_total_g, type: :decimal
-    = f.input :calories, type: :decimal
-    = f.input :description, as: :text, placeholder: t('information_or_recipe')
-    = f.button :submit, class: 'btn btn-success mt-1'
+    .my-3
+      = f.input :name
+    .my-3
+      = f.input :protein_g, type: :decimal, label: t('protein_g')
+    .my-3
+      = f.input :fat_total_g, type: :decimal, label: t('fat_g')
+    .my-3
+      = f.input :carbohydrates_total_g, type: :decimal, label: t('carbohydrates_g')
+    .my-3
+      = f.input :calories, type: :decimal
+    .my-3
+      = f.input :description, as: :text, placeholder: t('information_or_recipe')
+    .my-3
+      = f.button :submit, class: 'btn btn-success mt-1'
