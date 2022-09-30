@@ -3,6 +3,12 @@ en:
     create:
       success: 'Diet was successfully created'
       fail: 'Something wrong'
+    destroy:
+      success: 'Diet was successfully destroyed'
+      fail: 'Something wrong'
+    update:
+      success: 'Diet was successfully updated'
+      fail: 'Something wrong'
     meals:
       destroy:
         success: 'Meal was successfully removed'

@@ -9,3 +9,6 @@ en:
     create:
       success: 'Product was successfully created.'
       fail: 'Something wrong.'
+    update:
+      success: 'Product was successfully updated.'
+      fail: 'Something wrong.'

@@ -19,7 +19,7 @@ module DailyDiets
       authorize @meal
       diet = @meal.daily_diet
       if @meal.destroy
-        redirect_to daily_diet_path(diet), notice: t('.success')
+        redirect_to daily_diet_path(diet), notice: t('.success'), status: :see_other
         ReduceNutrientsJob.perform_async(@meal.attributes)
       else
         redirect_to daily_diet_path(diet), alert: t('.fail')

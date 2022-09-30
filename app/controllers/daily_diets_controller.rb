@@ -46,7 +46,7 @@ class DailyDietsController < ApplicationController
     @daily_diet = find_daily_diet
     authorize @daily_diet
     if @daily_diet.destroy
-      redirect_to daily_diets_path, notice: t('.success')
+      redirect_to daily_diets_path, notice: t('.success'), status: :see_other
     else
       redirect_to daily_diet_path(@daily_diet), alert: t('.fail')
     end

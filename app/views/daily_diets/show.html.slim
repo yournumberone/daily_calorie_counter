@@ -21,6 +21,7 @@ strong.mx-3
 br
   .m-3
     = link_to t('edit'), edit_daily_diet_path(@daily_diet), class: 'btn btn-warning'
+    =< link_to t('delete'), daily_diet_path(@daily_diet), class: 'btn btn-danger', data: { confirm: t('are_you_sure'), 'turbo-method': :delete }
 
 .m-3
   = simple_form_for [@daily_diet, @meal] do |f|

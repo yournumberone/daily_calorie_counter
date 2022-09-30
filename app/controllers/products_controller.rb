@@ -48,7 +48,7 @@ class ProductsController < ApplicationController
     @product = find_product
     authorize @product
     if @product.destroy
-      redirect_to products_path, notice: t('.success')
+      redirect_to products_path, notice: t('.success'), status: :see_other
     else
       redirect_to product_path(@product), alert: t('.fail')
     end
