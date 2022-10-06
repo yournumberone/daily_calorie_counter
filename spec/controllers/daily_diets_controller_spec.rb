@@ -40,7 +40,7 @@ RSpec.describe DailyDietsController, type: :controller do
     it 'creates diet' do
       sign_in user
       expect do
-        post :create, params: { daily_diet: { planned_calories: 1200, date: Time.zone.today } }
+        post :create, params: { daily_diet: { planned_calories: 1200, date: Time.zone.yesterday } }
       end.to change(DailyDiet, :count).by(1)
     end
 

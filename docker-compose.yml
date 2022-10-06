@@ -23,6 +23,8 @@ services:
       - db
       - redis
     env_file: .env.test
+    environment:
+      - POSTGRESQL_HOST=db
   redis:
     image: redis:7.0.5-bullseye
   sidekiq:

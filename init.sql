@@ -1,1 +1,0 @@
-CREATE DATABASE daily_calorie_counter_development;
